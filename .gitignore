@@ -1,0 +1,21 @@
+# Certificates
+.certs
+
+# Logs
+.logs
+
+# Resources
+.resources
+
+# Dependency directory
+# https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
+node_modules
+
+# Rest
+.DS_Store
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid

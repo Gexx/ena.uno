@@ -1,0 +1,14 @@
+{
+    "name": "ena.uno",
+    "version": "0.0.5",
+    "description": "Ena.uno Site",
+    "main": "app.js",
+    "dependencies": {
+        "mersenne": "latest",
+        "express": "latest",
+        "socket.io": "latest",
+        "crypto": "latest",
+        "shell-arguments": "latest",
+        "pg-promise": "latest"
+    }
+}

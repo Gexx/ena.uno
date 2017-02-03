@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	
+        <title>Ena Game</title>
+        
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+        
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/jquery.powertip.min.css" rel="stylesheet">
+        <link href="css/app.css" rel="stylesheet">
+    </head>
+    
+    <body class="normal">
+    	
+        <div class="game_portal_center">
+        	<div class="portal_logo"></div>
+        	<div class="portal_user">
+            	<input type="text" id="nick" placeholder="Enter your nickname..." class=" form-control input-lg" style="width: 100%;" />
+            </div>
+            <div class="portal_button">
+            	<button id="btn_get_in" type="button" class="btn btn-success btn-lg">Play</button>
+			</div>
+            <div class="portal_table">
+            	<div class="portal_table_wrap">
+                    <ul>
+<!--                    
+                        <li data-name="normal" class="selected">
+                        	<div class="table-thumb normal"></div>
+                            <div class="portal_table_data">
+                                <div>Table name: Normal</div>
+                                <div>Players: 4/6</div>
+                                <div>Spectators: 34</div>
+                                <div>Status: Playing</div>
+                            </div>
+                        </li>
+-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="players_holder" style="display:none">
+        	<div class="players">
+            	<ul>
+<!--                
+					<li id="player-1" class="player">
+                    	<img class="player-avatar" src="https://api.adorable.io/avatars/155/Dora.png">
+                        <div style="display: inline-block;">
+                        	<div>Dora</div>
+                        	<div>Cards: 11</div>
+                        </div>
+                    </li>
+                    <li id="player-2" class="player player-turn">
+                    	<img class="player-avatar" src="https://api.adorable.io/avatars/155/Ivan.png">
+                        <div style="display: inline-block;">
+                        	<div>Ivan</div>
+                        	<div>Cards: 8</div>
+                        </div>
+                    </li>
+                    <li id="player-5" class="player player-you">
+                    	<img class="player-avatar" src="https://api.adorable.io/avatars/155/GeXx.png">
+                        <div style="display: inline-block;">
+                        	<div>GeXx</div>
+                        	<div>Cards: 7</div>
+                        </div>
+                    </li>
+-->
+                </ul>
+            </div>
+        </div>
+
+		<div class="table_status" style="display:none">
+        	Status: <span class="game-status">Open</span><br/>
+            Spectators: <span class="game-spectators">0</span><br/>
+            Players: <span class="game-players-num">0</span>/<span class="game-max-players-num">6</span><br/>
+            Dealer: <span class="game-dealer">Unknown</span><br/>
+        	Turn: <span class="game-on_turn">Unknown</span><br/>
+            Direction: <span class="game-direction"></span><br/>
+            <div class="game-direction-wrap"><span class="none"></span></div>
+            <div id="radial-progress"></div>
+        </div>
+        
+        <div class="game_help_data">
+        	<div class="game_help_wrap">
+            	<h2>Help</h2>
+                <ul>
+                	<li>In this game you will need a lot of concentration and fast reactions.</li>
+                    <li>On top of the screen you can see all players sitting at the table.</li>
+                    <li>Yellow is you, Green is player who is playing.</li>
+                </ul> 
+                <hr/>
+                <h2>Game Moto</h2>
+                <ul>
+                	<li>Speed And Efficiency</li>
+                    <li>Speed speed speed!</li>
+                </ul> 
+                <hr/>
+                <h2>Game Rules</h2>
+                <ul>
+                    <li>The first player who have zero cards in hand wins the game.</li>
+                    <li>Valid card is the one that matches color or symbol, or if it is a Wild card.</li>
+                    <li>You can't finish the game with a Wild Card, if you try to do so, you will draw 2 cards.</li>
+                    <li>Every game starts clockwise from dealer, unless first card on bottom is Rotate card.</li>
+                    <li>You can decide to draw even if you have valid card to play.</li>
+                    <li>You can skip players if you have card with the same symbol and color as the card on table.</li>
+                    <li>When playing zero, you can switch cards with another player. (Use this power wisely.)</li>
+                </ul> 
+                <hr/> 
+                <h2>Game Dynamic</h2>
+                <ul>
+                    <li>Game starts when table is full, or if 2 or more players are waiting for more than 20 seconds.</li>
+                    <li>At the begining of the game, 108 ENA cards deck is dealt to the table.</li>
+                    <li>Each player gets 7 cards.</li>
+                    <li>Top card is face up dealt to the table center.</li>
+                    <li>Dealer is choosen randomly between all the players at the table.</li>
+                    <li>Dealer starts the game, unless first card on bottom is Skip card.</li>
+                    <li>You have 15 seconds to react, or else you will draw 1 card automaticly.</li>
+                </ul>
+                <hr/>
+                <h2>Provably Fair</h2>
+                <ul>
+                    <li>The game is Provably Fair, meaning that site can mathematicaly prove that it does not cheat on you.</li>
+                </ul>
+        	</div>
+        </div>
+        <div class="game_help" style="display:none">
+        	?
+        </div>
+        <div class="game_mute" style="display:none">
+        	<span class="sound"></span>
+        </div>
+        
+        <div class="card_table_center" style="display:none">
+            <div class="choose_color">
+              <h2>Choose color for Wild card!</h2>
+              <hr/>
+              <div class="choose_color_box red"></div>
+              <div class="choose_color_box green"></div>
+              <div class="choose_color_box yellow"></div>
+              <div class="choose_color_box blue"></div>
+              <div class="choose_color_box black" style="display: none;"></div>
+            </div>
+            
+            <div class="choose_player">
+              <h2>Choose a player to switch cards!</h2>
+              <hr/>
+              <p>Click on a player above to switch cards.</p>
+              <div class="choose_player_box">
+              	<ul>
+                </ul>
+              </div>
+            </div>
+            
+        	<div class="banner winner_banner"></div>
+            <div class="banner lost_banner"></div>
+            <div class="banner your_turn_banner"></div>
+            <div class="banner jump_banner"></div>
+            <div class="banner waiting_banner"></div>
+            
+        	<div class="card_table_deck">
+                <!--<span style="transform: rotate(-1deg);" class="ena-card on-table card-special-back"></span>-->
+            </div>
+        	<div class="card_table">
+            	<!--<span style="transform: rotate(-9deg);" class="ena-card on-table card-green-4"></span>-->
+            </div>
+        </div>
+    
+    	<div class="command_holder" style="display:none">
+        	<button id="btn_sit" type="button" class="btn btn-success btn-lg">Sit</button>
+            <button id="btn_leave" type="button" class="btn btn-danger">Leave</button>
+        </div>
+        
+    	<div class="card_holder" style="display:none">
+        	<div class="cards">
+            	<ul id="hand">        
+					<!--<li class="ena-card in-hand card-red-0" data-value="R0"></li>-->
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-box"><ul></ul></div>
+
+        <footer>
+	        <h2><i>Open Source</i> Ena Game (Websockets &amp; HTML5+CSS3) by GeXx</h2>
+            <a class="github" href="https://github.com/gexx/ena.uno" target="_blank">Fork us on Github</a>
+            <div class="users-online">Users Online: <span class="total-users">0</span></div>
+            <div class="status-online offline"></div>
+        </footer>
+        
+        <!-- Audio support for notifications mainly -->
+        <audio id="audiotag_yourturn" src="misc/yourturn.mp3" preload="auto"></audio>
+        <audio id="audiotag_draw" src="misc/draw.mp3" preload="auto"></audio>
+        <audio id="audiotag_play_01" src="misc/play_01.mp3" preload="auto"></audio>
+        <audio id="audiotag_play_02" src="misc/play_02.mp3" preload="auto"></audio>
+        <audio id="audiotag_win" src="misc/win.mp3" preload="auto"></audio>
+        <audio id="audiotag_lose" src="misc/lose.mp3" preload="auto"></audio>
+
+        <!-- Preloading sprite -->
+        <img alt="cache" style="display: none;" src="img/ena-sprite.png" preload="auto"></audio>
+        
+    </body>
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/jquery.powertip.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/css-terminal.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/d3-radial-progress.js"></script>
+</html>
